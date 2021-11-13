@@ -13,6 +13,7 @@ client = commands.Bot(command_prefix = '!')
 async def on_ready():
   print('Logged in as {0.user}'.format(client))
 
+
 @client.command()
 async def dl(ctx, arg1):
   await ctx.message.channel.send('Processing mp3...')
@@ -23,6 +24,7 @@ async def dl(ctx, arg1):
 
   deleteFile(file)
 
+
 @client.command()
 async def h(ctx):
   embed = discord.Embed(title='Commands', description='These are all the commands Muse Bot uses. \n\n *Note: Muse Bot ONLY works with youtube videos*\n\n', color=0xFF5733)
@@ -32,6 +34,7 @@ async def h(ctx):
   embed.add_field(name='`!dl <youtube link>`', value="\n Download command that converts youtube link to a downloadable mp3. \n\nEx: `!dl https://www.youtube.com/watch?v=pNeZjNgvu38`", inline=False)
 
   await ctx.message.channel.send(embed = embed)
+
 
 @client.event
 async def on_guild_join(guild):
@@ -44,6 +47,7 @@ You can use the `!h` command to get started!
         
         embed.set_footer(text="p.s. my creator is SaphaelEternal#3735!")
         await general.send(embed=embed)
+
 
 @client.event
 async def on_message(message):
@@ -72,9 +76,8 @@ def downLoad(url):
      ddl = ydl.extract_info(url, download = True)
      filename = ydl.prepare_filename(ddl).replace('webm', 'mp3')
      
-  
-  
   return filename
+
 
 def deleteFile(file):
   if os.path.exists(file):
