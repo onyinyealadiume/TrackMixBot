@@ -6,9 +6,10 @@ from keep_alive import keep_alive
 
 TOKEN = os.environ['TOKEN']
 
-client = commands.Bot(command_prefix = '!')
+intents = discord.Intents.all()
+TOKEN = os.environ['TOKEN']
 
-
+client = commands.Bot(command_prefix='-', intents=intents)
 @client.event
 async def on_ready():
   print('Logged in as {0.user}'.format(client))
