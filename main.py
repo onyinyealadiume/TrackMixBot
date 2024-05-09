@@ -10,7 +10,7 @@ TOKEN = os.environ['TOKEN']
 intents = discord.Intents.all()
 TOKEN = os.environ['TOKEN']
 
-client = commands.Bot(command_prefix='-', intents=intents)
+client = commands.Bot(command_prefix='!', intents=intents)
 @client.event
 async def on_ready():
   print('Logged in as {0.user}'.format(client))
@@ -80,13 +80,13 @@ async def search(ctx, *, keyword):
    
 @client.command()
 async def h(ctx):
-  embed = discord.Embed(title='Commands', description='These are all the commands Muse Bot uses. \n\n *Note: Muse Bot ONLY works with youtube videos*\n\n', color=0xFF5733)
+  embed = discord.Embed(title='Commands', description='These are all the commands this botuses. \n\n *Note: This bot ONLY works with youtube videos for now*\n\n', color=0xFF5733)
   
-  embed.add_field(name='`!h`', value="\n Help command returns info on Muse Bot and other commands.", inline=False)
+  embed.add_field(name='`!h`', value="\n Help command returns info on this bot and other commands.", inline=False)
 
   embed.add_field(name='`!dl <youtube link>`', value="\n Download command that converts youtube link to a downloadable mp3. \n\nEx: `!dl https://www.youtube.com/watch?v=pNeZjNgvu38`", inline=False)
 
-  embed.add_field(name='`-search <keyword>`', value="\n Search command that looks for songs in the database that match the keyword in their title. \n\nEx: `-search love`", inline=False)
+  embed.add_field(name='`!search <keyword>`', value="\n Search command that looks for songs in the database that match the keyword in their title. \n\nEx: `!search love`", inline=False)
 
   await ctx.message.channel.send(embed = embed)
 
@@ -96,7 +96,7 @@ async def on_guild_join(guild):
     general = guild.text_channels[0]
     if general and general.permissions_for(guild.me).send_messages:
         embed=discord.Embed(title="**== *Thanks For Adding Me!* ==**", description=f"""
-        Hi!! I'm Muse 😄! I'm a discord bot that lets you convert Youtube videos to mp3s! Thanks for adding me to {guild.name}! \n  
+        Hi!! I'm WindysCorner 😄! I'm a discord bot that lets you convert Youtube videos to mp3s! Thanks for adding me to {guild.name}! \n  
 You can use the `!h` command to get started!
         """, color=0xd89522)
         
