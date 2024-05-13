@@ -54,14 +54,16 @@ def insert_user(conn, discord_id, username):
     return discord_id
 
 
+
+# Function to search for songs by keyword and retrieve their file paths
 def search_songs(keyword):
     conn = create_connection()
     if conn is not None:
         cursor = conn.cursor()
         try:
-            query = "SELECT title FROM songs WHERE title LIKE ?"
+            query = "SELECT pathToMp3 FROM songs WHERE pathToMp3 LIKE ?"
             cursor.execute(query, ('%' + keyword + '%',))
-            return [row[0] for row in cursor.fetchall()]
+            return [row[0] for row in cursor.fetchall()]  # Return list of file paths
         except Exception as e:
             print("Error searching for songs:", e)
             return []
@@ -70,5 +72,7 @@ def search_songs(keyword):
     else:
         print("Failed to connect to the database.")
         return []
+
+
 
 setup_database()  # Call this function to ensure your tables are set up
